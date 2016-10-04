@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.madesty.madestymwesogame.EnterActivity"
+    android:background="@drawable/board"
+    android:id="@+id/gameBoard">
+
+    <com.madesty.madestymwesogame.Player xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/p11"
+        android:onClick="onClick" />
+
+    <com.madesty.madestymwesogame.Player xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/p12" />
+
+    <com.madesty.madestymwesogame.Player xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/p13" />
+
+    <com.madesty.madestymwesogame.Token xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/chk1"
+        android:background="@android:color/transparent" />
+
+    <com.madesty.madestymwesogame.Token xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/chk2"
+        android:background="@android:color/transparent" />
+
+    <com.madesty.madestymwesogame.Token xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/chk3"
+        android:background="@android:color/transparent" />
+
+    <com.madesty.madestymwesogame.Player xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/p21" />
+
+    <com.madesty.madestymwesogame.Player xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/p22" />
+
+    <com.madesty.madestymwesogame.Player xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="onClick"
+        android:id="@+id/p23" />
+</RelativeLayout>

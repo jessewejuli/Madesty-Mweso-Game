@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.madesty.madestymwesogame.LoginActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/new_user"
+        android:id="@+id/newUsertxtvw"
+        android:textSize="@dimen/text_size"
+        android:gravity="center"
+        android:minHeight="60dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/newUseredittxt"
+        android:gravity="center"
+        android:hint="@string/newUser_hint"
+        android:minHeight="60dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:text="@string/newUser_button"
+        android:id="@+id/newUserSubmit"
+        android:onClick="onClick"
+        android:minHeight="60dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/existing_user"
+        android:id="@+id/existingusertxtvw"
+        android:textSize="@dimen/text_size"
+        android:gravity="center" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:id="@+id/existinguserscrollable">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linlay"></LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

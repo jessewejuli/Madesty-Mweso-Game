@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Madesty Mweso Game</string>
+    <string name="new_user">Are you a new user?</string>
+    <string name="newUser_hint">Enter your name here</string>
+    <string name="existing_user">Existing User?</string>
+    <string name="newUser_button">Submit</string>
+    <string name="welcome_greet">Welcome To Mweso Game</string>
+    <string name="opponent">Choose your opponent</string>
+    <string name="opp1">Computer</string>
+    <string name="opp2">Human</string>
+    <string name="exapp">Exit App</string>
+    <string name="settings">Settings</string>
 </resources>
