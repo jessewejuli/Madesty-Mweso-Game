@@ -1,0 +1,482 @@
+public class GameState{
+
+    private Player p11, p12, p13, p21, p22, p23;
+    private Token t1, t2, t3;
+    private ArrayList<GameState> states;
+    private ArrayList<ArrayList> stateArray;
+    private ArrayList<GameState> possibleMoves;
+    private int winState, difficulty;
+    private Boolean turn;
+    private int movemade;
+
+    public GameState(Player p11, Player p12, Player p13, Player p21, Player p22, Player p23,
+                     Token t1, Token t2, Token t3, boolean turn){
+        possibleMoves = new ArrayList<>();
+        difficulty = PersistanceManager.difficulty;
+        this.p11 = p11;
+        this.p12 = p12;
+        this.p13 = p13;
+        this.p21 = p21;
+        this.p22 = p22;
+        this.p23 = p23;
+        this.t1 = t1;
+        this.t2 = t2;
+        this.t3 = t3;
+        this.turn = turn;
+        if(getWinState()){
+            winState = 1;
+        }else if(getLoseState()){
+            winState = -1;
+        }else{
+            winState = 0;
+        }
+    }
+
+    public void setMovemade(int movemade){
+        this.movemade = movemade;
+    }
+
+    public int getMovemade(){
+        return movemade;
+    }
+
+    public void setTurn(boolean turn){
+        this.turn = turn;
+    }
+
+    public boolean getTurn(){
+        return turn;
+    }
+
+    public int status(){
+        return winState;
+    }
+
+    public boolean getWinState(){
+        return PersistanceManager.getpGameboard().isWin(p11.getCoord(), p12.getCoord(), p13.getCoord(), 1);
+    }
+
+    public boolean getLoseState(){
+        return PersistanceManager.getpGameboard().isWin(p21.getCoord(), p22.getCoord(), p23.getCoord(), 2);
+    }
+
+    private void generateGameStates(){
+        states = new ArrayList<>();
+        stateArray = new ArrayList<>();
+
+        if(turn) {
+
+            if(PersistanceManager.getpGameboard().legalMove(p11.getCoord(), t1.getCoord())){
+
+                Player p = new Player(p11.getContext());
+                p.setCoord(t1.getCoord());
+                Token t = new Token(t1.getContext());
+                t.setCoord(p11.getCoord());
+
+                GameState game = new GameState(p, p12, p13, p21, p22, p23, t, t2, t3, !turn);
+                game.setMovemade(111);
+                states.add(game);
+
+            }
+
+
+
+            if (PersistanceManager.getpGameboard().legalMove(p11.getCoord(), t2.getCoord())) {
+
+                Player p = new Player(p11.getContext());
+                p.setCoord(t2.getCoord());
+                Token t = new Token(t2.getContext());
+                t.setCoord(p11.getCoord());
+
+                GameState game = new GameState(p, p12, p13, p21, p22, p23, t1, t, t3, !turn);
+                game.setMovemade(112);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p11.getCoord(), t3.getCoord())) {
+
+                Player p = new Player(p11.getContext());
+                p.setCoord(t3.getCoord());
+                Token t = new Token(t3.getContext());
+                t.setCoord(p11.getCoord());
+
+                GameState game = new GameState(p, p12, p13, p21, p22, p23, t1, t2, t, !turn);
+                game.setMovemade(113);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p12.getCoord(), t1.getCoord())) {
+
+                Player p = new Player(p12.getContext());
+                p.setCoord(t1.getCoord());
+                Token t = new Token(t1.getContext());
+                t.setCoord(p12.getCoord());
+
+                GameState game = new GameState(p11, p, p13, p21, p22, p23, t, t2, t3, !turn);
+                game.setMovemade(121);
+                states.add(game);
+
+            }
+
+
+            if (PersistanceManager.getpGameboard().legalMove(p12.getCoord(), t2.getCoord())) {
+
+                Player p = new Player(p12.getContext());
+                p.setCoord(t2.getCoord());
+                Token t = new Token(t2.getContext());
+                t.setCoord(p12.getCoord());
+
+                GameState game = new GameState(p11, p, p13, p21, p22, p23, t1, t, t3, !turn);
+                game.setMovemade(122);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p12.getCoord(), t3.getCoord())) {
+
+                Player p = new Player(p12.getContext());
+                p.setCoord(t3.getCoord());
+                Token t = new Token(t3.getContext());
+                t.setCoord(p12.getCoord());
+
+                GameState game = new GameState(p11, p, p13, p21, p22, p23, t1, t2, t, !turn);
+                game.setMovemade(123);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p13.getCoord(), t1.getCoord())) {
+
+                Player p = new Player(p13.getContext());
+                p.setCoord(t1.getCoord());
+                Token t = new Token(t1.getContext());
+                t.setCoord(p13.getCoord());
+
+                GameState game = new GameState(p11, p12, p, p21, p22, p23, t, t2, t3, !turn);
+                game.setMovemade(131);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p13.getCoord(), t2.getCoord())) {
+
+                Player p = new Player(p13.getContext());
+                p.setCoord(t2.getCoord());
+                Token t = new Token(t2.getContext());
+                t.setCoord(p13.getCoord());
+
+                GameState game = new GameState(p11, p12, p, p21, p22, p23, t1, t, t3, !turn);
+                game.setMovemade(132);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p13.getCoord(), t3.getCoord())) {
+
+                Player p = new Player(p13.getContext());
+                p.setCoord(t3.getCoord());
+                Token t = new Token(t3.getContext());
+                t.setCoord(p13.getCoord());
+
+                GameState game = new GameState(p11, p12, p, p21, p22, p23, t1, t2, t, !turn);
+                game.setMovemade(133);
+                states.add(game);
+
+            }
+
+            turn = !turn;
+
+        }else {
+
+            if (PersistanceManager.getpGameboard().legalMove(p21.getCoord(), t1.getCoord())) {
+
+                Player p = new Player(p21.getContext());
+                p.setCoord(t1.getCoord());
+                Token t = new Token(t1.getContext());
+                t.setCoord(p21.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p, p22, p23, t, t2, t3, !turn);
+                game.setMovemade(211);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p21.getCoord(), t2.getCoord())) {
+
+                Player p = new Player(p21.getContext());
+                p.setCoord(t2.getCoord());
+                Token t = new Token(t2.getContext());
+                t.setCoord(p21.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p, p22, p23, t1, t, t3, !turn);
+                game.setMovemade(212);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p21.getCoord(), t3.getCoord())) {
+
+                Player p = new Player(p21.getContext());
+                p.setCoord(t3.getCoord());
+                Token t = new Token(t3.getContext());
+                t.setCoord(p21.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p, p22, p23, t1, t2, t, !turn);
+                game.setMovemade(213);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p22.getCoord(), t1.getCoord())) {
+
+                Player p = new Player(p22.getContext());
+                p.setCoord(t1.getCoord());
+                Token t = new Token(t1.getContext());
+                t.setCoord(p22.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p21, p, p23, t, t2, t3, !turn);
+                game.setMovemade(221);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p22.getCoord(), t2.getCoord())) {
+
+                Player p = new Player(p22.getContext());
+                p.setCoord(t2.getCoord());
+                Token t = new Token(t2.getContext());
+                t.setCoord(p22.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p21, p, p22, t1, t, t3, !turn);
+                game.setMovemade(222);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p22.getCoord(), t3.getCoord())) {
+
+                Player p = new Player(p22.getContext());
+                p.setCoord(t3.getCoord());
+                Token t = new Token(t3.getContext());
+                t.setCoord(p22.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p21, p, p23, t1, t2, t, !turn);
+                game.setMovemade(223);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p23.getCoord(), t1.getCoord())) {
+
+                Player p = new Player(p23.getContext());
+                p.setCoord(t1.getCoord());
+                Token t = new Token(t1.getContext());
+                t.setCoord(p23.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p21, p22, p, t, t2, t3, !turn);
+                game.setMovemade(231);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p23.getCoord(), t2.getCoord())) {
+
+                Player p = new Player(p23.getContext());
+                p.setCoord(t2.getCoord());
+                Token t = new Token(t2.getContext());
+                t.setCoord(p23.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p21, p22, p, t1, t, t3, !turn);
+                game.setMovemade(232);
+                states.add(game);
+
+            }
+
+            if (PersistanceManager.getpGameboard().legalMove(p23.getCoord(), t3.getCoord())) {
+
+                Player p = new Player(p23.getContext());
+                p.setCoord(t3.getCoord());
+                Token t = new Token(t3.getContext());
+                t.setCoord(p23.getCoord());
+
+                GameState game = new GameState(p11, p12, p13, p21, p22, p, t1, t2, t, !turn);
+                game.setMovemade(233);
+                states.add(game);
+
+            }
+
+            turn = !turn;
+
+        }
+    }
+
+    private void generateTree(int depth){
+
+    }
+
+    public int returnMove(){
+        generateGameStates();
+
+        if(difficulty == 1){
+
+            Random ran = new Random(SystemClock.currentThreadTimeMillis());
+            int i = 0;
+
+            while(!(i==30000000)){
+                i++;
+            }
+
+            if (states.size() == 0) {
+                return 1;
+            }
+
+            return states.get(ran.nextInt(states.size())).getMovemade();
+
+
+
+        }else if(difficulty == 2){
+
+            ArrayList<Integer> win = new ArrayList<>();
+            ArrayList<Integer> draw = new ArrayList<>();
+            diff2();
+            for(GameState gameState : possibleMoves){
+                if(gameState.status() == 1){
+                    win.add(gameState.getMovemade());
+                }else if(gameState.status() == 0){
+                    draw.add(gameState.getMovemade());
+                }
+            }
+            if(win.isEmpty() && draw.isEmpty() && !states.isEmpty()){
+
+                return states.get
+                        (new Random(SystemClock.currentThreadTimeMillis()).nextInt
+                                (states.size())).getMovemade();
+
+            }else if(!win.isEmpty()){
+
+                return win.get(new Random(SystemClock.currentThreadTimeMillis()).nextInt(win.size()));
+
+            }else if(!draw.isEmpty()){
+
+                return draw.get(new Random(SystemClock.currentThreadTimeMillis()).nextInt(draw.size()));
+
+            }else{
+
+                return 1;
+
+            }
+
+        }else if(difficulty == 3){
+
+            ArrayList<Integer> win = new ArrayList<>();
+            ArrayList<Integer> draw = new ArrayList<>();
+            diff3();
+            for(GameState gameState : possibleMoves){
+                if(gameState.status() == 1){
+                    win.add(gameState.getMovemade());
+                }else if(gameState.status() == 0){
+                    draw.add(gameState.getMovemade());
+                }
+            }
+            if(win.isEmpty() && draw.isEmpty() && !states.isEmpty()){
+
+                return states.get
+                        (new Random(SystemClock.currentThreadTimeMillis()).nextInt
+                                (states.size())).getMovemade();
+
+            }else if(!win.isEmpty()){
+
+                return win.get(new Random(SystemClock.currentThreadTimeMillis()).nextInt(win.size()));
+
+            }else if(!draw.isEmpty()){
+
+                return draw.get(new Random(SystemClock.currentThreadTimeMillis()).nextInt(draw.size()));
+
+            }else{
+
+                return 1;
+
+            }
+
+        }
+
+        return 1;
+
+    }
+
+    public int minimax(int depth){
+
+        int ret = 0;
+
+        if(depth == 0){
+            return ret;
+        }
+
+        if(ret == 1){
+            return ret;
+        }
+
+        for(GameState g : states){
+            if(g.status() == 1){
+                ret = 1;
+            }
+        }
+
+        return 0;
+    }
+
+    public void diff2(){
+
+        possibleMoves = new ArrayList<>();
+
+        for(GameState gameState : states){
+            possibleMoves.add(gameState);
+        }
+
+        for(GameState gameState : states){
+
+            gameState.generateGameStates();
+            for (GameState gameState1 : gameState.states){
+                if(gameState1.status() == -1){
+                    if(possibleMoves.contains(gameState)){
+                        possibleMoves.remove(gameState);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    public void diff3(){
+
+        possibleMoves = new ArrayList<>();
+
+        for(GameState gameState : states){
+            possibleMoves.add(gameState);
+        }
+
+        for(GameState gameState : states){
+            gameState.generateGameStates();
+            for (GameState gameState1 : gameState.states){
+                gameState1.generateGameStates();
+                for (GameState gameState2 : gameState1.states){
+                    gameState2.generateGameStates();
+                    for (GameState gameState3 : gameState2.states){
+
+                        if(gameState3.status() == -1){
+                            if(possibleMoves.contains(gameState)){
+                                possibleMoves.remove(gameState);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+
+}
