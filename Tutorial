@@ -1,0 +1,108 @@
+public class Tutorial_disabletutorial extends DialogFragment {
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.tutorial, null);
+
+        TextView tutText = (TextView) dialogView.findViewById(R.id.tutText);
+        tutText.setText(getString(R.string.disable));
+
+        builder.setView(dialogView);
+        builder.setCancelable(true);
+        builder.setPositiveButton("GOT IT!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dismiss();
+            }
+        });
+        return builder.create();
+    }
+
+}
+
+public class Tutorial_playwithfriends extends DialogFragment {
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.tutorial, null);
+
+        TextView tutText = (TextView) dialogView.findViewById(R.id.tutText);
+        tutText.setText(getString(R.string.playwithfriend));
+
+        builder.setView(dialogView);
+        builder.setCancelable(true);
+        builder.setPositiveButton("GOT IT!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dismiss();
+            }
+        });
+        return builder.create();
+    }
+
+}
+
+public class Tutorial_viewstats extends DialogFragment{
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.tutorial, null);
+
+        TextView tutText = (TextView) dialogView.findViewById(R.id.tutText);
+        tutText.setText(getString(R.string.longpress));
+
+        builder.setView(dialogView);
+        builder.setCancelable(true);
+        builder.setPositiveButton("GOT IT!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dismiss();
+            }
+        });
+        return builder.create();
+    }
+
+}
+
+public class Tutorial_winstate extends DialogFragment {
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.tutorial, null);
+
+        TextView tutText = (TextView) dialogView.findViewById(R.id.tutText);
+        tutText.setText(getString(R.string.youwin));
+
+        builder.setView(dialogView);
+        builder.setCancelable(true);
+        builder.setPositiveButton("GOT IT!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dismiss();
+            }
+        });
+        return builder.create();
+    }
+
+}
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tutText"
+        android:layout_margin="20dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+</LinearLayout>
